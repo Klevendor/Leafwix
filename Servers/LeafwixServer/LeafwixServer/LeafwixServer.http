@@ -1,0 +1,6 @@
+@LeafwixServer_HostAddress = http://localhost:5148
+
+GET {{LeafwixServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
