@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LeafwixServerDAL.Entities.App;
+using Microsoft.AspNetCore.Identity;
 
 namespace LeafwixServerDAL.Entities.Identity
 {
@@ -6,6 +7,9 @@ namespace LeafwixServerDAL.Entities.Identity
     {
 
 
+        // Навігаційна властивість до налаштувань сповіщень
+        public NotificationSettings NotificationSettings { get; set; }
 
+        public List<Plant> Plants { get; set; }
     }
 }
