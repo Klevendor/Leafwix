@@ -653,6 +653,5 @@ cython_debug/
 
 
 # My 
-Datasets
-Models
+datasets/
 Literature
