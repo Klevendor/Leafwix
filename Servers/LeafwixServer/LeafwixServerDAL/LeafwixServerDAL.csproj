@@ -10,6 +10,7 @@
     <Folder Include="Configuration\" />
     <Folder Include="Repositories\Implementation\" />
     <Folder Include="Repositories\Interfaces\" />
+    <Folder Include="Constants\" />
   </ItemGroup>
 
   <ItemGroup>
