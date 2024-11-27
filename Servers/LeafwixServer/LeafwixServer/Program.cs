@@ -58,7 +58,13 @@ builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
+
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IPlantRepository, PlantRepository>();
+builder.Services.AddScoped<INotificationSettingsRepository, NotificationSettingsRepository>();
+builder.Services.AddScoped<IPlantDiseasesRepository, PlantDiseasesRepository>();
+builder.Services.AddScoped<IPlantSpeciesRepository, PlantSpeciesRepository>();
+
 
 /* Configs */
 
