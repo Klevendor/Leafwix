@@ -6,8 +6,8 @@ namespace LeafwixServerDAL.Repositories.Implementation
 {
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        protected readonly ApplicationDbContext _context;
+        protected readonly DbSet<T> _dbSet;
 
         public GenericRepository(ApplicationDbContext сontext)
         {

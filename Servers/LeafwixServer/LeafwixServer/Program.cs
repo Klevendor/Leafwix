@@ -66,6 +66,17 @@ builder.Services.AddScoped<IPlantDiseasesRepository, PlantDiseasesRepository>();
 builder.Services.AddScoped<IPlantSpeciesRepository, PlantSpeciesRepository>();
 
 
+builder.Services.AddScoped<INotificationSettingsService, NotificationSettingsService>();
+builder.Services.AddScoped<IPlantService, PlantService>();
+builder.Services.AddScoped<IPlantDiseasesService, PlantDiseasesService>();
+builder.Services.AddScoped<IPlantSpeciesService, PlantSpeciesService>();
+
+
+
+
+
+
+
 /* Configs */
 
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("AppSettings"));
