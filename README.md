@@ -1,3 +1,3 @@
 # Leafwix
 
-Look after your plans with ease with Leafwix!
+Look after your plants with ease with Leafwix!
