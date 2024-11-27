@@ -49,7 +49,7 @@ const RegisterForm = () => {
                     <h1 className={styles.title}>Register</h1>
                 </div>
                 <div className={styles.form_subtitle_container}>
-                    <h1 className={styles.subtitle}>Welcome to NovelsWord! Please enjoy your works!</h1>
+                    <h1 className={styles.subtitle}>Welcome to Leafwix! Please enjoy your plant-friend!</h1>
                 </div>
             </div>
             <div className={styles.form}>
