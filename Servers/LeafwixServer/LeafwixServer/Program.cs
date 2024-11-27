@@ -5,6 +5,8 @@ using LeafwixServerDAL.Constants.Settings;
 using LeafwixServerDAL.Context.Implementation;
 using LeafwixServerDAL.Context.Interfaces;
 using LeafwixServerDAL.Entities.Identity;
+using LeafwixServerDAL.Repositories.Implementation;
+using LeafwixServerDAL.Repositories.Interfaces;
 using LeafwixServerDAL.Seeding;
 using Mapster;
 using MapsterMapper;
@@ -56,7 +58,7 @@ builder.Services.AddIdentity<User, IdentityRole<Guid>>(options =>
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IJwtService, JwtService>();
-
+builder.Services.AddScoped<IPlantRepository, PlantRepository>();
 
 /* Configs */
 
