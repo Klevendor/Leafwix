@@ -16,7 +16,9 @@ namespace LeafwixServerDAL.Context.Implementation
         public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options) {}
+        : base(options) {
+        
+        }
 
         public DbSet<NotificationSettings> NotificationSettings { get; set; }
         public DbSet<Plant> Plants { get; set; }

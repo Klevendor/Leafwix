@@ -247,13 +247,13 @@ namespace LeafwixServerBLL.Services.Implementation
 
         private void RemoveOldRefreshTokens(User user)
         {
-            //user.RefreshTokens.RemoveAll(x =>
-            //    !x.IsActive &&
-            //    x.Created.AddDays(_jwtSettings.RefreshTokenTTL) <= DateTime.UtcNow);
+            user.RefreshTokens.RemoveAll(x =>
+                !x.IsActive &&
+                x.Created.AddDays(2) <= DateTime.UtcNow);
 
             //TODO fix REFRESH DOUBLE
-            user.RefreshTokens.RemoveAll(x =>
-               !x.IsActive);
+            //user.RefreshTokens.RemoveAll(x =>
+            //   !x.IsActive);
         }
     }
 }

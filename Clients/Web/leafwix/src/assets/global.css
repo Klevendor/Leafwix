@@ -1,0 +1,45 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+:root {
+  --font-primary: "Open Sans";
+  --main-color: #ffffff;
+  --text-color: #000000;
+  --secondary-text-color: #2D3142;
+  --primary-color: #40d130;
+  --secondary-color: #ff88dc;
+  --tertiary-color: #e2e90e;
+  --quaternary-color: #ff3538;
+  /* #FF4A1C */
+  /* color-scheme: light dark; */
+}
+
+
+/* Editor */
+.editor-text-bold {
+  font-weight: bold;
+}
+
+.editor-text-italic {
+  font-style: italic;
+}
+
+.editor-text-underline {
+  text-decoration: underline;
+}
+
+.editor-text-strikethrough {
+  text-decoration: line-through;
+}
+
+.editor-text-underlineStrikethrough {
+  text-decoration: underline line-through;
+}

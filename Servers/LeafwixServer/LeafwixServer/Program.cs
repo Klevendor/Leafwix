@@ -117,7 +117,8 @@ builder.Services.AddCors(options =>
         option => option
             .SetIsOriginAllowed(origin => true)
             .AllowAnyHeader()
-            .AllowAnyMethod());
+            .AllowAnyMethod()
+            .AllowCredentials());
 });
 
 /* Mapper */
