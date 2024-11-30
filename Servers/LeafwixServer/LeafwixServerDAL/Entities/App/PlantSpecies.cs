@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LeafwixServerDAL.Entities.App
+﻿namespace LeafwixServerDAL.Entities.App
 {
     public class PlantSpecies
     {
@@ -15,11 +9,13 @@ namespace LeafwixServerDAL.Entities.App
         public string WateringFrequency { get; set; } // Як часто поливати рослину (щодня, раз на тиждень тощо)
         public string LightRequirements { get; set; } // Вимоги до освітлення (пряме, непряме, тінь).
         public string SoilType { get; set; } // Тип ґрунту (слабокислий, нейтральний, лужний).
-        
-        
-        public List<Plant> Plants { get; set; }
+
+        // Один тип рослини може мати багато зображень
+        public ICollection<PlantImage> PlantImages { get; set; } = [];
+
+        public List<Plant> Plants { get; set; } = [];
 
         // Навігаційна властивість для хвороб рослин
-        public List<PlantDiseases> PlantDiseases { get; set; }
+        public List<PlantDiseases> PlantDiseases { get; set; } = [];
     }
 }

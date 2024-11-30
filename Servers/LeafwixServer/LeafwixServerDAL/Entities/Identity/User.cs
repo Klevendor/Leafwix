@@ -6,10 +6,10 @@ namespace LeafwixServerDAL.Entities.Identity
 {
     public class User: IdentityUser<Guid>
     {
-        public List<RefreshToken> RefreshTokens { get; set; }        // Навігаційна властивість до налаштувань сповіщень
-        
-        public NotificationSettings NotificationSettings { get; set; }
+        public List<RefreshToken> RefreshTokens { get; set; } = [];        // Навігаційна властивість до налаштувань сповіщень
 
-        public List<Plant> Plants { get; set; }
+        public NotificationSettings NotificationSettings { get; set; } = null!;
+
+        public List<Plant> Plants { get; set; } = [];
     }
 }

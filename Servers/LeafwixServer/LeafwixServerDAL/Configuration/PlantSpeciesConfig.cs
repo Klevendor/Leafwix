@@ -1,7 +1,6 @@
 ﻿using LeafwixServerDAL.Entities.App;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Reflection.Emit;
 
 namespace LeafwixServerDAL.Configuration
 {
@@ -19,7 +18,9 @@ namespace LeafwixServerDAL.Configuration
             .WithOne(pd => pd.PlantSpecies)
             .HasForeignKey(pd => pd.PlantSpeciesId);
 
-
+            builder.HasMany(ps => ps.PlantImages)
+           .WithOne(pd => pd.PlantSpecies)
+           .HasForeignKey(pd => pd.PlantSpeciesId);
         }
     }
 }
