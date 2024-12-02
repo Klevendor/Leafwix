@@ -1,0 +1,16 @@
+.sidebar_imitation
+{
+    width: 64px;
+    min-width: 64px;
+}
+
+@media (max-width: 1024px) {
+    .sidebar_imitation{
+        display: none;
+    }
+
+    /* .sidebar_block{
+        height: 65px;
+        max-height: 65px;
+    } */
+}

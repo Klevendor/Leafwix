@@ -1,0 +1,94 @@
+.plant_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center; 
+    width: 300px;
+}
+
+.plant {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 42px;
+    z-index: 0;
+}
+
+.pot {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.plant_img{
+
+}
+
+.pot_img{
+    
+}
+
+/* HTML: <div class="loader"></div> */
+.eyes_sleep {
+    display: inline-flex;
+    gap: 10px;
+  }
+  .eyes_sleep:before,
+  .eyes_sleep:after {
+    content: "";
+    height: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      linear-gradient(#222 0 0) top/100% 0% no-repeat,
+      radial-gradient(farthest-side,#000 95%,#0000) 50%/8px 8px no-repeat
+      #fff;
+    animation: l9 4s infinite ease-in;
+  }
+  @keyframes l9 {
+    0%  {background-size:100% 0%,8px 8px;background-position:top, 50% 50%}
+    80% {background-size:100% 70%,8px 8px;background-position:top, 50% 70%}
+    84%,
+    100%{background-size:100% 0%,8px 8px;background-position:top, 50% 50%}
+  }
+
+.eyes_dissatisfaction {
+    position: relative;
+    display: inline-flex;
+    gap: 10px;
+    z-index: 2;
+    top:-160px;
+    /* left: 90px;  */
+  }
+  .eyes_dissatisfaction:before,
+  .eyes_dissatisfaction:after {
+    content: "";
+    height: 32px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      linear-gradient(#7a3021 0 0) top/100% 40% no-repeat,
+      radial-gradient(farthest-side,#000 95%,#0000) 50%/8px 8px no-repeat
+      #fff;
+    animation: 2.5s infinite ;
+    animation-name: l8-1, e8-2;
+  }
+  @keyframes l8-1 {
+    0%,
+    40%,
+    100%{background-size:100% 40%,8px 8px}
+    50%,
+    80% {background-size:100% 0% ,8px 8px}
+  }
+  @keyframes l8-2 {
+    0%,
+    50% {background-position:top,50% 50%}
+    60%,
+    65%{background-position:top,70% 50%}
+    70%,
+    75%{background-position:top,30% 50%}
+    90%,
+    100%{background-position:top,50% 50%}
+  }

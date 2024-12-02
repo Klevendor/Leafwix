@@ -1,0 +1,278 @@
+.container{
+    display: flex;
+    width: 75%;
+    height: 95%;
+    margin: 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: row;
+}
+
+.option_container1{
+    /* background-color: bisque; */
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action_buttons_container1{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+}
+
+.watter_button{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #0a80ff;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden; 
+    transition: color 0.4s ease, background-color 0.4s ease;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.watter_button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1687ff;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.6s ease;
+    opacity: 0.5;
+  }
+  
+
+.watter_button:hover::before {
+    transform: scaleY(1); 
+}
+
+.watter_button:hover{
+    color: #fff;
+    background-color: #0056b3;
+}
+
+.drop{
+    font-size: 30px;
+    rotate: 180deg;
+}
+
+.feeding_button {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    background-color: #1bce00;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease, background-color 0.4s ease;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.feeding_button:hover {
+    animation: jitter 0.1s infinite alternate linear;
+}
+
+.visual_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: rgb(219, 126, 13); */
+    width: 60%;
+    height: 100%;
+}
+
+.plant_title{
+    position: relative;
+    top: 36px;
+    z-index: 2;
+}
+
+.title{
+    margin: 0;
+}
+
+.plants_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgb(219, 126, 13); */
+    width: 100%;
+    height: 100%;
+}
+
+.option_container2{
+    /* background-color: bisque; */
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action_buttons_container2{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+
+.sunny_button {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    background-color: rgb(239, 239, 0);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease, background-color 0.4s ease;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sunny_button:hover {
+    animation: pulse 1.2s ease-out infinite;
+}
+
+.heal_button {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    color: white;
+    background-color: rgba(245, 0, 16, 0.899);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease, background-color 0.4s ease;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.heal_button:hover {
+    animation: shake 0.5s ease infinite;
+}
+
+.mobile_options_container{
+    display: none;
+}
+
+.button_add_container{
+    width: 300px;
+    height: 612px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add_new_plant{
+    width: 180px;
+    height: 90px;
+    position: relative;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    background-color: var(--primary-color);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease, background-color 0.4s ease;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(5px); }
+}
+
+@keyframes jitter {
+    0% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(-5deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .container{
+        width: 100%;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .container{
+        flex-direction: column;
+        height: auto;
+        margin: 0;
+    }
+    
+    .option_container1{
+        display: none;
+    }
+
+    .mobile_options_container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        margin: 20px;
+        gap: 10px;
+    }
+
+    .option_container2{
+        display: none;
+    }
+
+    .visual_container{
+        width: 100%;
+    }
+}

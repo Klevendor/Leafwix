@@ -6,7 +6,7 @@ const CheckAuth = () =>{
 
     return (
         auth?.accessToken && auth.accessToken !== ""
-        ? <Navigate to="/home" replace/>
+        ? <Navigate to="/home/myplants" replace/>
         : <Outlet/> 
     );
 }

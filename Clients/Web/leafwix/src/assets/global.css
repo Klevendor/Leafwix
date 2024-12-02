@@ -23,23 +23,62 @@ body {
 }
 
 
-/* Editor */
-.editor-text-bold {
-  font-weight: bold;
+/* Splide */
+
+.splide {
+  max-width: 70%;
 }
 
-.editor-text-italic {
-  font-style: italic;
+.splide__slide {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.editor-text-underline {
-  text-decoration: underline;
+.splide__pagination  {
+ z-index: 0;
 }
 
-.editor-text-strikethrough {
-  text-decoration: line-through;
+.splide__pagination__page.is-active {
+  background: var(--primary-color);
 }
 
-.editor-text-underlineStrikethrough {
-  text-decoration: underline line-through;
+.splide__arrow svg{
+  fill: var(--primary-color);
 }
+
+@media (max-width: 700px) {
+  .splide {
+    max-width: 74%;
+  }
+}
+
+/* 
+.splide__arrow {
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 10px;
+  border-radius: 50%;
+} */
+
+/* .splide__pagination__item {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+.splide__pagination__item.is-active {
+  background-color: #007bff; 
+}
+
+.splide__play {
+  background-color: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.splide__track {
+  padding: 10px;
+} */

@@ -42,7 +42,7 @@ const LoginForm = () => {
                     accessToken: result?.dataOrError?.token,
                     avatarPath: result?.dataOrError?.avatarImagePath
                 })
-                navigate("/home",{replace:true})
+                navigate("/home/myplants",{replace:true})
             }
             setIsLoading(false)
     }

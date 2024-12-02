@@ -46,7 +46,7 @@ const Navbar = () => {
                             </div>
                             <div className={`${styles.menu_option} ${location.pathname.includes("/home/history")? styles.active_option : ""}`}
                             onClick={()=>handleRedirectTo("/home/history")}>
-                                <i class="fa-solid fa-calendar-days"></i>
+                                <i className="fa-solid fa-calendar-days"></i>
                             </div>
                             <div className={`${styles.menu_option} ${location.pathname == "/home/myprofile"? styles.active_option : ""}`}
                             onClick={()=>handleRedirectTo("/home/myprofile")}>
