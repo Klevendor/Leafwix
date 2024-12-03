@@ -4,9 +4,8 @@ using LeafwixServerDAL.Repositories.Interfaces;
 
 namespace LeafwixServerDAL.Repositories.Implementation
 {
-    public class PlantDiseasesRepository : GenericRepository<PlantDiseases>, IPlantDiseasesRepository
+    public class PlantCareHistoryRepository : GenericRepository<PlantCareHistory>, IPlantCareHistoryRepository
     {
-        public PlantDiseasesRepository(ApplicationDbContext context) : base(context) { }
-
+        public PlantCareHistoryRepository(ApplicationDbContext context) : base(context) { }
     }
 }

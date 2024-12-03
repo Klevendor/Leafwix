@@ -1,4 +1,5 @@
-﻿using LeafwixServerBLL.Services.Interfaces;
+﻿using LeafwixServerBLL.Models;
+using LeafwixServerBLL.Services.Interfaces;
 using LeafwixServerDAL.Entities.App;
 using LeafwixServerDAL.Repositories.Interfaces;
 
@@ -13,14 +14,79 @@ namespace LeafwixServerBLL.Services.Implementation
             _repository = repository;
         }
 
-        public async Task<IEnumerable<PlantSpecies>> GetAllAsync() => await _repository.GetAllAsync();
+        public async Task<IEnumerable<PlantSpeciesResponse>> GetAllAsync()
+        {
+            var species = await _repository.GetAllAsync();
 
-        public async Task<PlantSpecies> GetByIdAsync(Guid id) => await _repository.GetByIdAsync(id);
+            return species.Select(ps => new PlantSpeciesResponse
+            {
+                Id = ps.Id,
+                Name = ps.Name,
+                Description = ps.Description,
+                Watering = ps.Watering,
+                Lighting = ps.Lighting,
+                SoilType = ps.SoilType,
+                Humidity = ps.Humidity,
+                Temperature = ps.Temperature
+            });
+        }
 
-        public async Task AddAsync(PlantSpecies species) => await _repository.AddAsync(species);
+        public async Task<PlantSpeciesResponse> GetByIdAsync(Guid id)
+        {
+            var ps = await _repository.GetByIdAsync(id);
+            if (ps == null) return null;
 
-        public async Task UpdateAsync(PlantSpecies species) => await _repository.UpdateAsync(species);
+            return new PlantSpeciesResponse
+            {
+                Id = ps.Id,
+                Name = ps.Name,
+                Description = ps.Description,
+                Watering = ps.Watering,
+                Lighting = ps.Lighting,
+                SoilType = ps.SoilType,
+                Humidity = ps.Humidity,
+                Temperature = ps.Temperature
+            };
+        }
 
-        public async Task DeleteAsync(Guid id) => await _repository.DeleteAsync(id);
+        public async Task AddAsync(PlantSpeciesCreateRequest createDto)
+        {
+            var plantSpecies = new PlantSpecies
+            {
+                Id = Guid.NewGuid(),
+                Name = createDto.Name,
+                Description = createDto.Description,
+                Watering = createDto.Watering,
+                Lighting = createDto.Lighting,
+                SoilType = createDto.SoilType,
+                Humidity = createDto.Humidity,
+                Temperature = createDto.Temperature
+            };
+
+            await _repository.AddAsync(plantSpecies);
+        }
+
+        public async Task UpdateAsync(PlantSpeciesUpdateRequest updateDto)
+        {
+            var existing = await _repository.GetByIdAsync(updateDto.Id);
+            if (existing == null) throw new KeyNotFoundException("Plant species not found");
+
+            existing.Name = updateDto.Name;
+            existing.Description = updateDto.Description;
+            existing.Watering = updateDto.Watering;
+            existing.Lighting = updateDto.Lighting;
+            existing.SoilType = updateDto.SoilType;
+            existing.Humidity = updateDto.Humidity;
+            existing.Temperature = updateDto.Temperature;
+
+            await _repository.UpdateAsync(existing);
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var existing = await _repository.GetByIdAsync(id);
+            if (existing == null) throw new KeyNotFoundException("Plant species not found");
+            await _repository.DeleteAsync(existing); 
+        }
     }
 }

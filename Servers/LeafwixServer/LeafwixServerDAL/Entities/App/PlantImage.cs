@@ -10,7 +10,7 @@ namespace LeafwixServerDAL.Entities.App
         public string ImagePath { get; set; } = null!;
 
         // Стан здоров'я рослини, для якого існує зображення
-        public HealthStatus HealthStatus { get; set; }
+        public Status Status { get; set; }
 
         // Зовнішній ключ, що вказує на тип рослини
         public Guid PlantSpeciesId { get; set; }

@@ -15,6 +15,9 @@ namespace LeafwixServerDAL.Configuration
         {
             builder.HasKey(sc => sc.Id);
 
+            builder.HasMany(ps => ps.PlantCareHistories)
+           .WithOne(pd => pd.Plant)
+           .HasForeignKey(pd => pd.PlantId);
         }
     }
 }

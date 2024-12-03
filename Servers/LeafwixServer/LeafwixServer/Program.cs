@@ -64,18 +64,13 @@ builder.Services.AddScoped<IPlantRepository, PlantRepository>();
 builder.Services.AddScoped<INotificationSettingsRepository, NotificationSettingsRepository>();
 builder.Services.AddScoped<IPlantDiseasesRepository, PlantDiseasesRepository>();
 builder.Services.AddScoped<IPlantSpeciesRepository, PlantSpeciesRepository>();
-
+builder.Services.AddScoped<IPlantCareHistoryRepository, PlantCareHistoryRepository>();
 
 builder.Services.AddScoped<INotificationSettingsService, NotificationSettingsService>();
 builder.Services.AddScoped<IPlantService, PlantService>();
 builder.Services.AddScoped<IPlantDiseasesService, PlantDiseasesService>();
 builder.Services.AddScoped<IPlantSpeciesService, PlantSpeciesService>();
-
-
-
-
-
-
+//builder.Services.AddScoped<IPlantCareHistoryService, PlantCareHistoryService>();
 
 /* Configs */
 

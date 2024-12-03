@@ -1,13 +1,14 @@
-﻿using LeafwixServerDAL.Entities.App;
+﻿using LeafwixServerBLL.Models;
+using LeafwixServerDAL.Entities.App;
 
 namespace LeafwixServerBLL.Services.Interfaces
 {
     public interface IPlantDiseasesService
     {
-        Task<IEnumerable<PlantDiseases>> GetAllAsync();
-        Task<PlantDiseases> GetByIdAsync(Guid id);
-        Task AddAsync(PlantDiseases disease);
-        Task UpdateAsync(PlantDiseases disease);
+        Task<List<PlantDiseaseResponse>> GetAllAsync();
+        Task<PlantDiseaseResponse> GetByIdAsync(Guid id);
+        Task AddAsync(PlantDiseaseCreateRequest disease);
+        Task UpdateAsync(PlantDiseaseUpdateRequest disease);
         Task DeleteAsync(Guid id);
     }
 }

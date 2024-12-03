@@ -1,13 +1,14 @@
-﻿using LeafwixServerDAL.Entities.App;
+﻿using LeafwixServerBLL.Models;
+using OneOf;
 
 namespace LeafwixServerBLL.Services.Interfaces
 {
     public interface IPlantService
     {
-        Task<IEnumerable<Plant>> GetAllAsync();
-        Task<Plant> GetByIdAsync(Guid id);
-        Task AddAsync(Plant plant);
-        Task UpdateAsync(Plant plant);
-        Task DeleteAsync(Guid id);
+        Task<List<PlantListResponse>> GetAllPlantsAsync(Guid userId);
+        Task<PlantResponse?> GetPlantAsync(Guid userId, Guid plantId);
+        Task AddPlantAsync(AddPlantRequest addPlantRequest);
+        Task UpdatePlantAsync(UpdatePlantRequest updatePlantRequest);
+        Task DeletePlantAsync(Guid userId, Guid plantId);
     }
 }

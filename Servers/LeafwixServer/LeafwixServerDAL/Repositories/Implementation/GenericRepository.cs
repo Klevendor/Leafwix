@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LeafwixServerDAL.Repositories.Implementation
 {
-    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly ApplicationDbContext _context;
         protected readonly DbSet<T> _dbSet;
@@ -27,7 +27,7 @@ namespace LeafwixServerDAL.Repositories.Implementation
 
         public async Task AddAsync(T entity)
         {
-            _dbSet.Add(entity);
+            await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 
@@ -37,14 +37,10 @@ namespace LeafwixServerDAL.Repositories.Implementation
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(T entity)
         {
-            var entity = await GetByIdAsync(id);
-            if (entity != null)
-            {
-                _dbSet.Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+            _dbSet.Remove(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }
