@@ -112,7 +112,7 @@ const MyPlantsPanel = () => {
         </div>
         <div className={styles.visual_container}>
             <div className={styles.plant_title}>
-                <h1 className={styles.title}>{activeIndex}</h1>
+                <h1 className={styles.title}>Happy</h1>
             </div>
             <div className={styles.plants_container}>
                 <Splide ref={splideRef} aria-label="My Favorite Images">

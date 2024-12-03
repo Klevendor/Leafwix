@@ -1,13 +1,19 @@
-import { useState } from "react";
-import styles from "./RecognizePlant.module.css";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import image from "/image.png"
 import { useNavigate } from "react-router";
+import { RecognitionService } from "../../../../services/RecognitionService";
+import { ToastContainer, toast } from 'react-toastify';
+import useRecognitionStore from "../../../../context/useRecognitionStore"
+
+import 'react-toastify/dist/ReactToastify.css';
+import styles from "./RecognizePlant.module.css";
 
 const RecognizePlant = () => {
     const navigate = useNavigate()
 
-    const [fileSelected, setFileSelected] = useState(null);
+    const [isLoading, setIsLoading] = useState(false)
+
+    const {fileSelected, setFileSelected, setRecognitionResult} = useRecognitionStore();
     const [imageUrl, setImageUrl] = useState(null);
     
     useEffect(() => {
@@ -22,17 +28,30 @@ const RecognizePlant = () => {
       }, [fileSelected]);
 
     const handleRecognize = async () => {
-        // setIsLoading(true)
-        // const result = await BookService.changeBookCover(axiosPrivate, {
-        //     bookId: book.id,
-        //     image: fileSelected
-        // })
-        // if (!result.isError) {
-        //     setImagePath(result.dataOrError)
-        // }
-        // setKey(prev => prev + 1)
-        // setIsLoading(false)
-        navigate("/home/checkplant")
+      if (fileSelected == null)
+      {
+          toast.error('Upload your image!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light"
+            });
+            return
+      }
+      
+        setIsLoading(true)
+        const result = await RecognitionService.recognizePlant({
+            image: fileSelected
+        })
+        if (!result.isError) {
+          setRecognitionResult(result.dataOrError.predicted_class, result.dataOrError.prediction_confidence)
+          navigate("/home/checkplant")
+        }
+        setIsLoading(false)
     }
 
 
@@ -50,6 +69,7 @@ const RecognizePlant = () => {
     <div className={styles.action_container}>
         <button onClick={handleRecognize} className={styles.recognize_button}>Recognize</button>
     </div>
+    <ToastContainer/>
   </div>
 }
 

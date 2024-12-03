@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
 import Select from 'react-select';
+import useRecognitionStore from "../../../../context/useRecognitionStore";
+import { ToastContainer, toast } from 'react-toastify';
 import image from "/image.png"
 
 import styles from "./ChangePlant.module.css";
@@ -54,9 +56,11 @@ const ChangePlant = () => {
       ];
     
     const navigate = useNavigate()
+    const [age, setAge] = useState("")
+    const [selectedOption, setSelectedOption] = useState("");
 
-    const [fileSelected, setFileSelected] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null); 
+    const {fileSelected, setPlantAge, setNewPredictedLabel} = useRecognitionStore();
+    const [imageUrl, setImageUrl] = useState(null);
     
     useEffect(() => {
         if (fileSelected) {
@@ -69,20 +73,29 @@ const ChangePlant = () => {
         }
       }, [fileSelected]);
 
-    const handleRecognize = async () => {
-        // setIsLoading(true)
-        // const result = await BookService.changeBookCover(axiosPrivate, {
-        //     bookId: book.id,
-        //     image: fileSelected
-        // })
-        // if (!result.isError) {
-        //     setImagePath(result.dataOrError)
-        // }
-        // setKey(prev => prev + 1)
-        // setIsLoading(false)
+      const handleNext = async () => {
+        let num = parseInt(age);
+        if (isNaN(num) || selectedOption == "") {
+          toast.error('The input AGE or SELECTED SPACIES are not a valid number or empty!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light"
+            });
+            return
+        } 
+        setPlantAge(num)
         navigate("/home/newplant")
-    }
+      }
 
+      const handleChange = (selectedOption) => {
+        setSelectedOption(selectedOption);
+        setNewPredictedLabel(selectedOption)
+      };
 
     return <div className={styles.container}>
     <div className={styles.cover_container}>
@@ -94,15 +107,19 @@ const ChangePlant = () => {
             <Select
             placeholder="Select"
             styles={customStyles}
-            options={plantSpecies}/>
+            options={plantSpecies}
+            onChange={handleChange} 
+            value={selectedOption}
+            />
         </div>
         <div className={styles.age_container}>
             <p className={styles.age_text}>Age:</p>
-            <input className={styles.age_input} type="text" placeholder="Enter..."/>
+            <input value={age} onChange={(e) => setAge(e.target.value)} className={styles.age_input} type="text" placeholder="Enter..."/>
         </div>
-        <button onClick={handleRecognize} className={styles.next_button}>Next</button>
+        <button onClick={handleNext} className={styles.next_button}>Next</button>
         <p onClick={() => navigate("/home/recognize")} className={styles.change}>Recognize again</p>
     </div>
+    <ToastContainer/>
   </div>
 }
 
