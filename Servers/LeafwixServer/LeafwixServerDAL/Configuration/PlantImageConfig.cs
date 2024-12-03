@@ -9,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace LeafwixServerDAL.Configuration
 {
-    public class PlantConfig : IEntityTypeConfiguration<Plant>
+    public class PlantImageConfig : IEntityTypeConfiguration<PlantImage>
     {
-        public void Configure(EntityTypeBuilder<Plant> builder)
+        public void Configure(EntityTypeBuilder<PlantImage> builder)
         {
             builder.HasKey(sc => sc.Id);
 
-            builder.HasMany(ps => ps.PlantCareHistories)
-           .WithOne(pd => pd.Plant)
-           .HasForeignKey(pd => pd.PlantId);
+
         }
     }
 }

@@ -24,7 +24,8 @@ namespace LeafwixServerDAL.Context.Implementation
         public DbSet<Plant> Plants { get; set; }
         public DbSet<PlantSpecies> PlantSpecies { get; set; }
         public DbSet<PlantDiseases> PlantDiseases { get; set; }
-
+        public DbSet<PlantImage> PlantImages { get; set; }
+        public DbSet<PlantCareHistory> PlantCareHistories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,8 @@ namespace LeafwixServerDAL.Context.Implementation
             modelBuilder.ApplyConfiguration(new PlantSpeciesConfig());
             modelBuilder.ApplyConfiguration(new PlantDiseasesConfig());
             modelBuilder.ApplyConfiguration(new UserConfig());
+            modelBuilder.ApplyConfiguration(new PlantImageConfig());
+            modelBuilder.ApplyConfiguration(new PlantCareHistoryConfig());
 
             base.OnModelCreating(modelBuilder);
         }
