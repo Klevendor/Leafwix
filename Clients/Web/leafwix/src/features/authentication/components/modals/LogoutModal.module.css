@@ -6,7 +6,7 @@
     background-color: rgba(0, 0, 0, 0.4);
     height: 100%;
     border: 0;
-    z-index: 2;
+    z-index: 20;
     font-family: var(--font-primary);
 }
 

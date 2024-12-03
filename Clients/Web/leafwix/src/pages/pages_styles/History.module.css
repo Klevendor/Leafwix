@@ -1,0 +1,82 @@
+.container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: var(--font-primary);
+}
+
+.histories_container{
+    display: flex;
+    width: 80%;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.history_option{
+    width: 33%;
+    height: 48px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    background-color: var(--primary-color);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease, background-color 0.4s ease;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.water_option{
+    background-color: #1687ff;
+}
+
+.water_option:hover{
+    background-color: #0056b3;
+}
+
+.water_active{
+    background-color: #0056b3;
+}
+
+.feeding_option{
+    background-color: #1bce00;
+}
+
+.feeding_option:hover{
+    background-color: #2fac22;
+}
+
+.feeding_active{
+    background-color: #2fac22;
+}
+
+.lighting_option{
+    background-color: #d8d801;
+}
+
+.lighting_option:hover{
+    background-color: #b3b300;
+}
+
+.lighting_active{
+    background-color: #b3b300;
+}
+
+@media (max-width: 1024px) {
+    .histories_container{
+       width: 90%;
+    }
+}

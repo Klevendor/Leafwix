@@ -45,12 +45,13 @@ const Navbar = () => {
                                 <i className="fa-solid fa-seedling"></i>
                             </div>
                             <div className={`${styles.menu_option} ${location.pathname.includes("/home/history")? styles.active_option : ""}`}
-                            onClick={()=>handleRedirectTo("/home/history")}>
+                            onClick={()=>handleRedirectTo("/home/history/water")}>
                                 <i className="fa-solid fa-calendar-days"></i>
                             </div>
-                            <div className={`${styles.menu_option} ${location.pathname == "/home/myprofile"? styles.active_option : ""}`}
-                            onClick={()=>handleRedirectTo("/home/myprofile")}>
-                                <i className="fa-solid fa-user"></i>
+                            <div className={`${styles.menu_option} ${location.pathname == "/home/recognize"? styles.active_option : ""}`}
+                            onClick={()=>handleRedirectTo("/home/recognize")}>
+                                {/* <i className="fa-solid fa-user"></i> */}
+                                <i className="fa-solid fa-circle-plus"></i>
                             </div>
                             <div className={`${styles.menu_option} ${styles.mobile_option_list}`}
                             onClick={() => setShowModalExitConfirm(true)}>

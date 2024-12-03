@@ -69,6 +69,12 @@
     margin-right: 10px;
 }
 
+.spacer{
+    display: none;
+    min-height: 80px;
+    width: 100%;
+}
+
 @media (max-width: 1500px) {
     .interesting_facts_container{
         display: none;
@@ -98,6 +104,10 @@
     }
 
     .interesting_facts_container{
+        display: flex;
+    }
+
+    .spacer{
         display: flex;
     }
 }

@@ -30,7 +30,7 @@ const PlantRecommendation = () => {
                 </ul>
             </div>
         </div>
-        <Spacer/>
+        <div className={styles.spacer}></div>
   </div>
 }
 

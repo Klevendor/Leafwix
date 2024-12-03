@@ -1,0 +1,99 @@
+.plant_avatar_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    flex-direction: column;
+}
+
+.plant_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center; 
+}
+
+.plant {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 42px;
+    z-index: 0;
+}
+
+.pot {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.eyes_dissatisfaction {
+    position: relative;
+    display: inline-flex;
+    gap: 10px;
+    z-index: 2;
+    top:-160px;
+    /* left: 90px;  */
+  }
+  .eyes_dissatisfaction:before,
+  .eyes_dissatisfaction:after {
+    content: "";
+    height: 32px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      linear-gradient(#7a3021 0 0) top/100% 40% no-repeat,
+      radial-gradient(farthest-side,#000 95%,#0000) 50%/8px 8px no-repeat
+      #fff;
+    animation: 2.5s infinite ;
+    animation-name: l8-1, e8-2;
+  }
+  @keyframes l8-1 {
+    0%,
+    40%,
+    100%{background-size:100% 40%,8px 8px}
+    50%,
+    80% {background-size:100% 0% ,8px 8px}
+  }
+  @keyframes l8-2 {
+    0%,
+    50% {background-position:top,50% 50%}
+    60%,
+    65%{background-position:top,70% 50%}
+    70%,
+    75%{background-position:top,30% 50%}
+    90%,
+    100%{background-position:top,50% 50%}
+  }
+
+.plant_name_container{
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+}
+
+.plant_name{
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 5px;
+    border: 2px solid var(--primary-color);
+    outline: none;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+@media (max-width: 1024px) {
+    .plant_avatar_container{
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .plant_name{
+        margin-top: 10px;
+    }
+}

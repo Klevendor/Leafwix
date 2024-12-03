@@ -2,24 +2,26 @@ import { useState } from "react";
 import styles from "./RecognizePlant.module.css";
 import { useEffect } from "react";
 import image from "/image.png"
+import { useNavigate } from "react-router";
 
 const RecognizePlant = () => {
+    const navigate = useNavigate()
+
     const [fileSelected, setFileSelected] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null); // To hold the image object URL
+    const [imageUrl, setImageUrl] = useState(null);
     
     useEffect(() => {
         if (fileSelected) {
           const objectUrl = URL.createObjectURL(fileSelected);
           setImageUrl(objectUrl);
     
-          // Clean up the object URL when the component is unmounted or the file changes
           return () => URL.revokeObjectURL(objectUrl);
         } else {
-          setImageUrl(null); // Reset imageUrl if no file is selected
+          setImageUrl(null);
         }
       }, [fileSelected]);
 
-    const handleUpdateCover = async () => {
+    const handleRecognize = async () => {
         // setIsLoading(true)
         // const result = await BookService.changeBookCover(axiosPrivate, {
         //     bookId: book.id,
@@ -30,13 +32,14 @@ const RecognizePlant = () => {
         // }
         // setKey(prev => prev + 1)
         // setIsLoading(false)
+        navigate("/home/checkplant")
     }
 
 
     return <div className={styles.container}>
     <h1>Recognize your plant</h1>
     <div className={styles.cover_container}>
-        <img className={styles.image_preview}   src={imageUrl || image}/>
+        <img className={styles.image_preview} src={imageUrl || image}/>
     </div>
     <div className={styles.upload_button_container}>
         <label htmlFor="plant_select" className={styles.upload_button}>
@@ -45,7 +48,7 @@ const RecognizePlant = () => {
         </label>
     </div>
     <div className={styles.action_container}>
-        <button className={styles.recognize_button}>Recognize</button>
+        <button onClick={handleRecognize} className={styles.recognize_button}>Recognize</button>
     </div>
   </div>
 }
