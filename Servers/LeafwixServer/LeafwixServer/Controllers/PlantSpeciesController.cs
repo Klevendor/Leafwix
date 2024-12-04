@@ -7,7 +7,7 @@ namespace LeafwixServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlantSpeciesController : ControllerBase
+    public class PlantSpeciesController : ApiController
     {
         private readonly IPlantSpeciesService _plantSpeciesService;
 

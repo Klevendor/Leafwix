@@ -27,7 +27,8 @@ namespace LeafwixServerBLL.Services.Implementation
                 Lighting = ps.Lighting,
                 SoilType = ps.SoilType,
                 Humidity = ps.Humidity,
-                Temperature = ps.Temperature
+                Temperature = ps.Temperature,
+                InterestingFacts = ps.InterestingFacts,
             });
         }
 
@@ -45,7 +46,8 @@ namespace LeafwixServerBLL.Services.Implementation
                 Lighting = ps.Lighting,
                 SoilType = ps.SoilType,
                 Humidity = ps.Humidity,
-                Temperature = ps.Temperature
+                Temperature = ps.Temperature,
+                InterestingFacts = ps.InterestingFacts 
             };
         }
 
@@ -60,7 +62,8 @@ namespace LeafwixServerBLL.Services.Implementation
                 Lighting = createDto.Lighting,
                 SoilType = createDto.SoilType,
                 Humidity = createDto.Humidity,
-                Temperature = createDto.Temperature
+                Temperature = createDto.Temperature,
+                InterestingFacts = createDto.InterestingFacts
             };
 
             await _repository.AddAsync(plantSpecies);
@@ -78,6 +81,7 @@ namespace LeafwixServerBLL.Services.Implementation
             existing.SoilType = updateDto.SoilType;
             existing.Humidity = updateDto.Humidity;
             existing.Temperature = updateDto.Temperature;
+            existing.InterestingFacts = updateDto.InterestingFacts;
 
             await _repository.UpdateAsync(existing);
         }

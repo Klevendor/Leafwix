@@ -10,6 +10,7 @@
         public string SoilType { get; set; }
         public string Humidity { get; set; }
         public string Temperature { get; set; }
+        public List<string> InterestingFacts { get; set; }
     }
 
     public class PlantSpeciesUpdateRequest
@@ -22,6 +23,7 @@
         public string SoilType { get; set; }
         public string Humidity { get; set; }
         public string Temperature { get; set; }
+        public List<string> InterestingFacts { get; set; }
     }
 
     /* Response Models */
@@ -35,5 +37,6 @@
         public string SoilType { get; set; }
         public string Humidity { get; set; } 
         public string Temperature { get; set; }
+        public List<string> InterestingFacts { get; set; }
     }
 }

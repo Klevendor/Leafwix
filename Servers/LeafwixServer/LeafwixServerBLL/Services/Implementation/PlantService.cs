@@ -46,7 +46,7 @@ namespace LeafwixServerBLL.Services.Implementation
                 Name = addPlantRequest.Name,
                 Age = addPlantRequest.Age,
                 Health = 100,
-                LastWatered = DateTime.Now,
+                LastWatered = DateTime.Now.ToUniversalTime(),
                 PlantSpeciesId = addPlantRequest.PlantSpeciesId,
                 UserId = addPlantRequest.UserId
             };
