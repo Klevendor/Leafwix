@@ -11,7 +11,6 @@
         public string Humidity { get; set; } // Вимоги до вологості 
         public string Temperature { get; set; } // Вимоги до температури
 
-
         // Масив або список цікавих фактів
         public List<string> InterestingFacts { get; set; } = new List<string>();
 
