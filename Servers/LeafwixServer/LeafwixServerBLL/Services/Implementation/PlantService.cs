@@ -25,7 +25,7 @@ namespace LeafwixServerBLL.Services.Implementation
                 var status = GetStatus(plant.Age);
                 var imageUrl = GetPlantImage(plant, status);
 
-                return new PlantListResponse(plant.Id, plant.Name, plant.Age, imageUrl, plant.Health);
+                return new PlantListResponse(plant.Id, plant.Name, plant.Age, imageUrl, plant.PlantSpecies.Name, plant.Health);
             }).ToList();
         }
 
@@ -46,7 +46,7 @@ namespace LeafwixServerBLL.Services.Implementation
                 Name = addPlantRequest.Name,
                 Age = addPlantRequest.Age,
                 Health = 100,
-                LastWatered = DateTime.Now,
+                LastWatered = DateTime.Now.ToUniversalTime(),
                 PlantSpeciesId = addPlantRequest.PlantSpeciesId,
                 UserId = addPlantRequest.UserId
             };
@@ -78,25 +78,61 @@ namespace LeafwixServerBLL.Services.Implementation
 
         private string GetPlantImage(Plant plant, Status status)
         {
-            var image = plant.PlantSpecies.PlantImages.FirstOrDefault(img => img.Status == status);
-            if (image == null)
+
+            string size = "";
+            if (status == Status.Small)
             {
-                return $"/images/default_plant{status}.png"; // Default image
+                size = "small";
+            }
+            else if (status == Status.Medium)
+            {
+                size = "medium";
+            }
+            else
+            {
+                size = "big";
             }
 
-            return image.ImagePath;
+            string species = "";
+            if (plant.PlantSpecies.Name == "African Violet (Saintpaulia ionantha)")
+            {
+                species = "african_violet";
+            }
+            else if (plant.PlantSpecies.Name == "Cast Iron Plant (Aspidistra elatior)")
+            {
+                species = "aspidistra_elatior";
+            }
+            else if (plant.PlantSpecies.Name == "Aloe Vera")
+            {
+                species = "aloe_vera";
+            }
+            else if (plant.PlantSpecies.Name == "Dracaena")
+            {
+                species = "dracaena_fragrans";
+            }
+            else
+            {
+                species = "default_plant";
+            }
+
+            return $"/{size}_{species}.svg";
         }
 
         // Визначення статусу здоров'я рослини
         private Status GetStatus(double health)
         {
-            return health switch
+            if (health <= 3)
             {
-                >= 5 => Status.Big,
-                >= 3 => Status.Medium,
-                >= 1 => Status.Small,
-                _ => Status.Dead
-            };
+                return Status.Small;
+            }
+            else if (health >= 3 && health < 5)
+            {
+                return Status.Medium;
+            }
+            else
+            {
+                return Status.Big;
+            }
         }
     }
 }

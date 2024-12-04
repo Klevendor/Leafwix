@@ -94,7 +94,7 @@ const ChangePlant = () => {
 
       const handleChange = (selectedOption) => {
         setSelectedOption(selectedOption);
-        setNewPredictedLabel(selectedOption)
+        setNewPredictedLabel(selectedOption.value)
       };
 
     return <div className={styles.container}>

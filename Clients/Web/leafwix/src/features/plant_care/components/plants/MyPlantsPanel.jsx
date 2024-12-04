@@ -7,6 +7,9 @@ import '@splidejs/react-splide/css/sea-green';
 import styles from "./MyPlantsPanel.module.css";
 
 import Plant from './Plant';
+import { PlantService } from '../../../../services/PlantService';
+import { useAuth } from "../../../../hooks/useAuth"
+import useAxiosPrivate from "../../../../hooks/useAxiosPrivate"
 
 const CustomWaterIcon = () => (
     <span role="img" aria-label="custom-icon" style={{ fontSize: "24px" }}>
@@ -32,11 +35,16 @@ const CustomHeartIcon = () => (
     </span>
   );
 
-const MyPlantsPanel = () => {
+const MyPlantsPanel = ({setActivePlant}) => {
+    const {auth} = useAuth()
+    const axiosPrivate = useAxiosPrivate()
     const navigate = useNavigate();
 
+    const [isLoading, setIsLoading] = useState(false)
     const splideRef = useRef(null);
     const [activeIndex, setActiveIndex] = useState(0);
+    const [name,setName] = useState()
+    const [plants,setPlants] = useState([])
 
     useEffect(() => {
         if (splideRef.current) {
@@ -51,10 +59,31 @@ const MyPlantsPanel = () => {
     }, []);
 
     useEffect(() => {
-        console.log(activeIndex)
+        if(plants.length != 0 && activeIndex < plants.length)
+        {
+            setName(plants[activeIndex].name)
+            setActivePlant(plants[activeIndex])
+        }
+        else
+        {
+            setName("")
+        }
     }, [activeIndex]);
 
-    
+    useEffect(()=>{
+        handleGetUserPlants()
+    },[])
+
+    const handleGetUserPlants = async () => {
+        const result = await PlantService.getAllPlantsByUser(axiosPrivate, {userid: auth.id})
+            if(!result.isError) {
+                setPlants(result.dataOrError)
+                if(result.dataOrError.length != 0)
+                    setActivePlant(result.dataOrError[0])
+                    setName(result.dataOrError[0].name)
+            } 
+    }
+
     const handleWater = () => {
         toast("You watered the plant. YOUR history was updated. HEALTH +10", {
             icon: <CustomWaterIcon />,
@@ -112,16 +141,17 @@ const MyPlantsPanel = () => {
         </div>
         <div className={styles.visual_container}>
             <div className={styles.plant_title}>
-                <h1 className={styles.title}>Happy</h1>
+                <h1 className={styles.title}>{name}</h1>
             </div>
             <div className={styles.plants_container}>
                 <Splide ref={splideRef} aria-label="My Favorite Images">
-                    <SplideSlide>
-                        <Plant />
-                    </SplideSlide>
-                    <SplideSlide>
-                        <Plant />
-                    </SplideSlide>
+                    {
+                        plants.map((plant,index) => {
+                            return  <SplideSlide key={index}>
+                            <Plant path={plant.imgPath}/>
+                        </SplideSlide>
+                        })
+                    }
                     <SplideSlide>
                         <div className={styles.button_add_container}>
                              <button onClick={() =>  navigate("/home/recognize")} className={styles.add_new_plant}>Add new</button>

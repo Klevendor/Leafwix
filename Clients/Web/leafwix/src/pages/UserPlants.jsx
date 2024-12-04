@@ -4,14 +4,16 @@ import {PlantRecommendation, MyPlantsPanel} from '../features/plant_care/index';
 import Spacer from '../components/Spacer';
 
 import styles from "./pages_styles/UserPlants.module.css";
+import { useState } from 'react';
 
 const UserPlants = () => {
+  const [activePlant, setActivePlant] = useState(null)
+
   return (
     <div className={styles.my_plants_container}>
-    <DummmySidebar />
     <div className={styles.content}>
-        <MyPlantsPanel/>
-        <PlantRecommendation/>
+        <MyPlantsPanel setActivePlant={setActivePlant}/>
+        <PlantRecommendation activePlant={activePlant}/>
     </div>
   </div>);
 }

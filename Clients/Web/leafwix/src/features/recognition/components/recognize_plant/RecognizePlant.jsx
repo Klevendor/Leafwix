@@ -48,7 +48,7 @@ const RecognizePlant = () => {
             image: fileSelected
         })
         if (!result.isError) {
-          setRecognitionResult(result.dataOrError.predicted_class, result.dataOrError.prediction_confidence)
+          setRecognitionResult( result.dataOrError.predicted_class, result.dataOrError.prediction_confidence)
           navigate("/home/checkplant")
         }
         setIsLoading(false)
@@ -67,7 +67,8 @@ const RecognizePlant = () => {
         </label>
     </div>
     <div className={styles.action_container}>
-        <button onClick={handleRecognize} className={styles.recognize_button}>Recognize</button>
+      {isLoading? <div className={styles.loader}></div>
+      :<button onClick={handleRecognize} className={styles.recognize_button}>Recognize</button>}
     </div>
     <ToastContainer/>
   </div>

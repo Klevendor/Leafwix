@@ -25,6 +25,10 @@ body {
 
 /* Splide */
 
+/* *{
+  outline: 4px solid green !important;
+} */
+
 .splide {
   max-width: 70%;
 }

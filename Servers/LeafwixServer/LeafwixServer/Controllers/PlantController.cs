@@ -18,7 +18,7 @@ namespace LeafwixServer.Controllers
         }
 
         //[Authorize("User,Administrator,Moderator")]
-        [HttpGet("getAll")]
+        [HttpGet("getAll/{userId}")]
         public async Task<IActionResult> GetAllPlants(Guid userId)
         {
             var plants = await _plantService.GetAllPlantsAsync(userId);

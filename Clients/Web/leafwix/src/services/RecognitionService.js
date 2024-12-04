@@ -32,14 +32,37 @@ export const RecognitionService = {
     },
 
     getPlantView(age,type) {
-        var size = ""
+        let size = ""
         if(age < 3)
         {
             size = "small"
-        } else if (age > 3 || age < 6) {
+        } else if (age > 3 && age < 5) {
             size = "medium"
         } else {
             size = "big"
         }
+        
+        let species = ""
+        if(type == "African Violet (Saintpaulia ionantha)")
+        {
+            species = "african_violet"
+        } 
+        else if (type == "Cast Iron Plant (Aspidistra elatior)") 
+        {
+            species = "aspidistra_elatior"
+        }
+        else if (type == "Aloe Vera") 
+        {
+            species = "aloe_vera"
+        }
+        else if (type == "Dracaena") 
+        {
+            species = "dracaena_fragrans"
+        }
+        else  {
+            species = "default_plant"
+        }
+        
+        return `${size}_${species}.svg`
     }
 }

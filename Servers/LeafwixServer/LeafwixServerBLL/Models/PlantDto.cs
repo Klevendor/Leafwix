@@ -36,6 +36,7 @@
         string Name,
         double Age,
         string imgPath,
+        string Type,
         int Health
     );
 }
