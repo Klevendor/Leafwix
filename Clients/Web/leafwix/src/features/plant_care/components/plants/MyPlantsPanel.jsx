@@ -35,7 +35,7 @@ const CustomHeartIcon = () => (
     </span>
   );
 
-const MyPlantsPanel = ({setActivePlant}) => {
+const MyPlantsPanel = ({activePlant, setActivePlant}) => {
     const {auth} = useAuth()
     const axiosPrivate = useAxiosPrivate()
     const navigate = useNavigate();
@@ -84,37 +84,54 @@ const MyPlantsPanel = ({setActivePlant}) => {
             } 
     }
 
+    const handleAddHistory = async (type) => {
+        const result = await PlantService.addHistory(axiosPrivate, {careType: type, plantId: activePlant.id, userId: auth.id})
+        return result
+    }
+
     const handleWater = () => {
-        toast("You watered the plant. YOUR history was updated. HEALTH +10", {
-            icon: <CustomWaterIcon />,
-            style: {
-                backgroundColor: "#0a80ff",
-                color: "#fff",
-                fontWeight: "bold", 
-              }
-          });
+        let result = handleAddHistory("Watering")
+        if(!result.isError)
+        {
+            toast("You watered the plant. YOUR history was updated. HEALTH +10", {
+                icon: <CustomWaterIcon />,
+                style: {
+                    backgroundColor: "#0a80ff",
+                    color: "#fff",
+                    fontWeight: "bold", 
+                  }
+              });
+        }
     }
 
     const handleFeeding = () => {
-        toast("You feeded the plant. YOUR history was updated. HEALTH +5", {
-            icon: <CustomFeedingIcon />,
-            style: {
-                backgroundColor: "#1bce00",
-                color: "#fff",
-                fontWeight: "bold", 
-              }
-          });
+        let result = handleAddHistory("Feeding")
+        if(!result.isError)
+        {
+            toast("You feeded the plant. YOUR history was updated. HEALTH +5", {
+                icon: <CustomFeedingIcon />,
+                style: {
+                    backgroundColor: "#1bce00",
+                    color: "#fff",
+                    fontWeight: "bold", 
+                  }
+              });
+        }
     }
     
     const handleSunny = () => {
-        toast("You have changed the lighting for the plant. YOUR history has been updated. HEALTH +5", {
-            icon: <CustomSunnyIcon />,
-            style: {
-                backgroundColor: "#efef00",
-                color: "#fff",
-                fontWeight: "bold", 
-              }
-          });
+        let result = handleAddHistory("Lighting")
+        if(!result.isError)
+        {
+            toast("You have changed the lighting for the plant. YOUR history has been updated. HEALTH +5", {
+                icon: <CustomSunnyIcon />,
+                style: {
+                    backgroundColor: "#efef00",
+                    color: "#fff",
+                    fontWeight: "bold", 
+                  }
+              });
+        }
     }
 
     const handleHeal = () => {

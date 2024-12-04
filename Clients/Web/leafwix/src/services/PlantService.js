@@ -74,6 +74,53 @@ export const PlantService = {
         }
     },
 
+    async addHistory(axiosPrivate, requestData) {
+        if (USE_PLATFORM == Platforms.Web) {
+            try{
+                const response = await axiosPrivate.post("api/PlantCareHistory/add", {
+                    careType: requestData.careType,
+                    plantId: requestData.plantId,
+                    userId: requestData.userId,
+                })
+                return {
+                    isError: false,
+                    status: response.status,
+                    dataOrError: response.data
+                };
+            } catch (err) {
+                console.log(`PlantService (addHistory) -> Error ${err.response.status}: ${this.errorMessages[err.response.status] || "Unknown error"}`);
+                return {
+                    isError: true,
+                    status: err.response.status,
+                    dataOrError: err.response.data.title
+                };
+            }
+        }
+    },
+
+    async getHistoryByType(axiosPrivate, requestData) {
+        if (USE_PLATFORM == Platforms.Web) {
+            try{
+                const response = await axiosPrivate.post("api/PlantCareHistory/gethistory", {
+                    careType: requestData.careType,
+                    userId: requestData.userId
+                })
+                return {
+                    isError: false,
+                    status: response.status,
+                    dataOrError: response.data
+                };
+            } catch (err) {
+                console.log(`PlantService (getHistoryByType) -> Error ${err.response.status}: ${this.errorMessages[err.response.status] || "Unknown error"}`);
+                return {
+                    isError: true,
+                    status: err.response.status,
+                    dataOrError: err.response.data.title
+                };
+            }
+        }
+    },
+
     getPlantView(age,type) {
         let size = ""
         if(age <= 3)

@@ -12,7 +12,7 @@ const UserPlants = () => {
   return (
     <div className={styles.my_plants_container}>
     <div className={styles.content}>
-        <MyPlantsPanel setActivePlant={setActivePlant}/>
+        <MyPlantsPanel setActivePlant={setActivePlant} activePlant={activePlant}/>
         <PlantRecommendation activePlant={activePlant}/>
     </div>
   </div>);
