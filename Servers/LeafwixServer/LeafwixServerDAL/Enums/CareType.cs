@@ -4,8 +4,7 @@
     public enum CareType
     {
         Watering,
-        Fertilizing,
-        Pruning,
-        PesticideApplication
+        Feeding,
+        Lighting
     }
 }
